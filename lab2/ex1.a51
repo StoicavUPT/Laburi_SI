@@ -1,0 +1,4 @@
+MOV DPTR,#1000h
+MOVX A,@DPTR
+MOV R0,A
+inc DPTR,
