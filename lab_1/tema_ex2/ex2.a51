@@ -1,0 +1,37 @@
+	ORG 0h
+	START:	MOV DPTR,#1000h
+			MOVX A,@DPTR
+			MOV R0,#0FFh
+			MOV R2,#00h
+			MOV R1,A
+	LOOP:	CJNE R2,#0Ah,CONT
+			SJMP EXIT
+	CONT:	MOV DPTR,#SSEG
+			MOV A,R2
+			MOVC A, @A+DPTR
+			INC R2
+			XRL A,R1
+			JNZ LOOP
+			DEC R2
+			MOV A,R2
+			MOV R0,A
+	EXIT:	MOV DPTR,#0100h
+			MOV A,R0
+			MOVX @DPTR,A
+			SJMP $
+			
+				
+				
+	ORG 1000H
+	SSEG: 	DB 3FH
+			DB 06H
+			DB 5BH
+			DB 4FH
+			DB 66H
+			DB 6DH
+			DB 7DH
+			DB 07H
+			DB 7FH
+			DB 6FH 
+	
+	END

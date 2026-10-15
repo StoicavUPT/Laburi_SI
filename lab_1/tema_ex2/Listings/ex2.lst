@@ -1,0 +1,66 @@
+A51 MACRO ASSEMBLER  EX2                                                                  10/16/2026 00:00:56 PAGE     1
+
+
+MACRO ASSEMBLER A51 V8.2.7.0
+OBJECT MODULE PLACED IN .\Objects\ex2.obj
+ASSEMBLER INVOKED BY: C:\Keil_v5\C51\BIN\A51.EXE ex2.a51 SET(SMALL) DEBUG PRINT(.\Listings\ex2.lst) OBJECT(.\Objects\ex2
+                      .obj) EP
+
+LOC  OBJ            LINE     SOURCE
+
+0000                   1             ORG 0h
+0000 901000            2             START:  MOV DPTR,#1000h
+0003 E0                3                             MOVX A,@DPTR
+0004 78FF              4                             MOV R0,#0FFh
+0006 7A00              5                             MOV R2,#00h
+0008 F9                6                             MOV R1,A
+0009 BA0A02            7             LOOP:   CJNE R2,#0Ah,CONT
+000C 800C              8                             SJMP EXIT
+000E 901000            9             CONT:   MOV DPTR,#SSEG
+0011 EA               10                             MOV A,R2
+0012 93               11                             MOVC A, @A+DPTR
+0013 0A               12                             INC R2
+0014 69               13                             XRL A,R1
+0015 70F2             14                             JNZ LOOP
+0017 1A               15                             DEC R2
+0018 EA               16                             MOV A,R2
+0019 F8               17                             MOV R0,A
+001A 900100           18             EXIT:   MOV DPTR,#0100h
+001D E8               19                             MOV A,R0
+001E F0               20                             MOVX @DPTR,A
+001F 80FE             21                             SJMP $
+                      22                             
+                      23                                     
+                      24                                     
+1000                  25             ORG 1000H
+1000 3F               26             SSEG:   DB 3FH
+1001 06               27                             DB 06H
+1002 5B               28                             DB 5BH
+1003 4F               29                             DB 4FH
+1004 66               30                             DB 66H
+1005 6D               31                             DB 6DH
+1006 7D               32                             DB 7DH
+1007 07               33                             DB 07H
+1008 7F               34                             DB 7FH
+1009 6F               35                             DB 6FH 
+                      36             
+                      37             END
+A51 MACRO ASSEMBLER  EX2                                                                  10/16/2026 00:00:56 PAGE     2
+
+SYMBOL TABLE LISTING
+------ ----- -------
+
+
+N A M E             T Y P E  V A L U E   ATTRIBUTES
+
+CONT . . . . . . .  C ADDR   000EH   A   
+EXIT . . . . . . .  C ADDR   001AH   A   
+LOOP . . . . . . .  C ADDR   0009H   A   
+SSEG . . . . . . .  C ADDR   1000H   A   
+START. . . . . . .  C ADDR   0000H   A   
+
+
+REGISTER BANK(S) USED: 0 
+
+
+ASSEMBLY COMPLETE.  0 WARNING(S), 0 ERROR(S)

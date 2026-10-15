@@ -1,0 +1,43 @@
+A51 MACRO ASSEMBLER  EX1                                                                  10/15/2026 22:43:51 PAGE     1
+
+
+MACRO ASSEMBLER A51 V8.2.7.0
+OBJECT MODULE PLACED IN .\Objects\ex1.obj
+ASSEMBLER INVOKED BY: C:\Keil_v5\C51\BIN\A51.EXE ex1.a51 SET(SMALL) DEBUG PRINT(.\Listings\ex1.lst) OBJECT(.\Objects\ex1
+                      .obj) EP
+
+LOC  OBJ            LINE     SOURCE
+
+0000                   1                     ORG 0h
+0000 901000            2     START:  mov DPTR,#1000h
+0003 E0                3                     movx A,@DPTR
+0004 B44100            4                     cjne A,#41h,next0
+0007 4005              5     next0:  jc next1
+0009 C3                6                     clr C
+000A 9437              7                     subb A,#37h
+000C 8005              8                     sjmp EXIT
+000E C3                9     next1:  clr C
+000F 9430             10                     subb A,#30h
+0011 8000             11                     sjmp EXIT
+0013 901001           12     EXIT:   mov DPTR,#1001h
+0016 F0               13                     movx @DPTR,A
+0017 80FE             14                     sjmp $
+                      15                     end
+A51 MACRO ASSEMBLER  EX1                                                                  10/15/2026 22:43:51 PAGE     2
+
+SYMBOL TABLE LISTING
+------ ----- -------
+
+
+N A M E             T Y P E  V A L U E   ATTRIBUTES
+
+EXIT . . . . . . .  C ADDR   0013H   A   
+NEXT0. . . . . . .  C ADDR   0007H   A   
+NEXT1. . . . . . .  C ADDR   000EH   A   
+START. . . . . . .  C ADDR   0000H   A   
+
+
+REGISTER BANK(S) USED: 0 
+
+
+ASSEMBLY COMPLETE.  0 WARNING(S), 0 ERROR(S)

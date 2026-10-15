@@ -1,0 +1,12 @@
+	ORG 0h
+	START:	MOV DPTR,#1000h
+			MOVX A,@DPTR
+			MOV B,#0Ah
+			DIV AB
+			MOV DPTR,#0100h
+			MOVX @DPTR,A
+			MOV DPTR,#0101h
+			MOV A,B
+			MOVX @DPTR,A
+			SJMP $
+			END
